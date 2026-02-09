@@ -3,8 +3,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const fs = require('fs');
-const path = require('path');
 require('dotenv').config();
 
 // 数据库连接
@@ -12,18 +10,86 @@ const db = require('./config/db');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DATA_DIR = process.env.DATA_DIR || './data';
 const JWT_SECRET = process.env.JWT_SECRET || 'tripmaster_jwt_secret_key_2026';
-
-// 创建数据目录（保持兼容性）
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
-}
 
 // 中间件配置
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static('dist'));
+
+// 根路径路由 - 返回欢迎信息
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome to TripMaster API',
+    version: '2.0.0',
+    status: 'running',
+    timestamp: new Date().toISOString(),
+    documentation: '/api/docs',
+    endpoints: {
+      auth: '/api/auth',
+      pois: '/api/pois',
+      itineraries: '/api/itineraries',
+      budgets: '/api/budgets',
+      memos: '/api/memos',
+      amap: '/api/amap'
+    }
+  });
+});
+
+// API文档路由
+app.get('/api/docs', (req, res) => {
+  res.json({
+    message: 'API Documentation',
+    baseUrl: req.protocol + '://' + req.get('host'),
+    endpoints: {
+      'POST /api/auth/register': '用户注册',
+      'POST /api/auth/login': '用户登录',
+      'GET /api/auth/me': '获取当前用户信息',
+      'GET /api/pois': '获取POIs列表',
+      'POST /api/pois': '创建POI',
+      'DELETE /api/pois/:id': '删除POI',
+      'GET /api/itineraries': '获取行程列表',
+      'POST /api/itineraries': '创建行程',
+      'PUT /api/itineraries/:id': '更新行程',
+      'DELETE /api/itineraries/:id': '删除行程',
+      'GET /api/budgets': '获取预算列表',
+      'POST /api/budgets': '创建预算',
+      'PUT /api/budgets/:id': '更新预算',
+      'DELETE /api/budgets/:id': '删除预算',
+      'GET /api/memos': '获取备忘录列表',
+      'POST /api/memos': '创建备忘录',
+      'PUT /api/memos/:id': '更新备忘录',
+      'DELETE /api/memos/:id': '删除备忘录',
+      'GET /api/amap/place/text': '高德地图地点搜索'
+    }
+  });
+});
+
+// 健康检查端点
+app.get('/health', async (req, res) => {
+  try {
+    // 测试数据库连接
+    const dbTest = await db.query('SELECT NOW() as current_time');
+    
+    res.status(200).json({
+      status: 'healthy',
+      timestamp: new Date().toISOString(),
+      database: 'connected',
+      uptime: process.uptime(),
+      memory: {
+        used: Math.round(process.memoryUsage().heapUsed / 1024 / 1024) + ' MB',
+        total: Math.round(process.memoryUsage().heapTotal / 1024 / 1024) + ' MB'
+      },
+      dbTime: dbTest.rows[0].current_time
+    });
+  } catch (error) {
+    res.status(503).json({
+      status: 'unhealthy',
+      timestamp: new Date().toISOString(),
+      database: 'disconnected',
+      error: error.message
+    });
+  }
+});
 
 // JWT验证中间件
 const authenticateToken = (req, res, next) => {
@@ -705,11 +771,6 @@ app.get('/api/amap/place/text', async (req, res) => {
     console.error('AMAP API Error:', error);
     res.status(500).json({ error: 'Failed to fetch from AMAP API' });
   }
-});
-
-// 主页路由
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 // 启动服务器
