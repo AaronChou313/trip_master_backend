@@ -22,7 +22,7 @@ const corsOptions = {
       'http://localhost:8080',           // 本地开发
       'http://localhost:3000',           // 本地开发备用端口
       'http://127.0.0.1:8080',          // 本地IP访问
-      'https://your-vercel-app.vercel.app', // Vercel生产环境
+      'https://trip-master-frontend-alpha.vercel.app/', // Vercel生产环境
       process.env.FRONTEND_URL,         // 环境变量指定的前端URL
     ].filter(Boolean); // 过滤掉undefined值
 
