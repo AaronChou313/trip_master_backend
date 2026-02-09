@@ -1,0 +1,95 @@
+[
+  {
+    "id": "1770468737955",
+    "name": "【住宿】汉庭昆明火车站酒店",
+    "description": "172/晚，两晚",
+    "amount": 344,
+    "category": "accommodation",
+    "createdAt": "2026-02-07T12:52:17.985Z",
+    "updatedAt": "2026-02-08T13:50:11.890Z"
+  },
+  {
+    "id": "1770469281855",
+    "name": "武汉-昆明【飞机】",
+    "description": "500/人，两人票",
+    "amount": 1000,
+    "category": "transport",
+    "createdAt": "2026-02-07T13:01:21.891Z"
+  },
+  {
+    "id": "1770469330074",
+    "name": "昆明-大理【火车】",
+    "description": "160/人，两人票",
+    "amount": 320,
+    "category": "transport",
+    "createdAt": "2026-02-07T13:02:10.098Z"
+  },
+  {
+    "id": "1770469385930",
+    "name": "大理-丽江【火车】",
+    "description": "80/人，两人票",
+    "amount": 160,
+    "category": "transport",
+    "createdAt": "2026-02-07T13:03:05.954Z"
+  },
+  {
+    "id": "1770469412551",
+    "name": "丽江-武汉【飞机】",
+    "description": "600/人，两人票",
+    "amount": 1200,
+    "category": "transport",
+    "createdAt": "2026-02-07T13:03:32.580Z"
+  },
+  {
+    "id": "1770469578586",
+    "name": "【住宿】大理橄榄树海景度假酒店",
+    "description": "1800/晚，一晚（听涛·180°亲水全海景大床房）",
+    "amount": 1800,
+    "category": "accommodation",
+    "createdAt": "2026-02-07T13:06:18.616Z",
+    "updatedAt": "2026-02-08T10:43:01.134Z"
+  },
+  {
+    "id": "1770477529968",
+    "name": "【住宿】大理市莞溪客栈（大理古城东门附近）",
+    "description": "191/晚，两晚",
+    "amount": 382,
+    "category": "accommodation",
+    "createdAt": "2026-02-07T15:18:49.991Z",
+    "updatedAt": "2026-02-08T15:33:33.492Z"
+  },
+  {
+    "id": "1770477557108",
+    "name": "【住宿】大理洱海公园美仑酒店（大理站附近）",
+    "description": "262晚，一晚",
+    "amount": 262,
+    "category": "accommodation",
+    "createdAt": "2026-02-07T15:19:17.134Z",
+    "updatedAt": "2026-02-08T13:15:21.040Z"
+  },
+  {
+    "id": "1770547437744",
+    "name": "【租车】大理火车站附近租车",
+    "description": "预算100/天，租借4天",
+    "amount": 400,
+    "category": "custom",
+    "createdAt": "2026-02-08T10:43:57.768Z"
+  },
+  {
+    "id": "1770556485318",
+    "name": "【住宿】丽江",
+    "description": "250/晚，两晚",
+    "amount": 500,
+    "category": "accommodation",
+    "createdAt": "2026-02-08T13:14:45.343Z",
+    "updatedAt": "2026-02-08T13:23:19.193Z"
+  },
+  {
+    "id": "1770556774772",
+    "name": "【饮食】九日餐饮",
+    "description": "250/天，九天",
+    "amount": 2250,
+    "category": "custom",
+    "createdAt": "2026-02-08T13:19:34.795Z"
+  }
+]

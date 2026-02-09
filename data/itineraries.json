@@ -1,0 +1,746 @@
+[
+  {
+    "id": "1770468126091",
+    "name": "Day1：落地昆明",
+    "date": "2026-02-09",
+    "description": "武汉天河机场出发，乘坐飞机抵达昆明，并入住酒店",
+    "pois": [
+      {
+        "id": "B03670W002",
+        "name": "昆明长水国际机场",
+        "address": "大板桥街道长水社区",
+        "location": "102.935835,25.099565",
+        "tel": "0871-96566",
+        "type": "交通设施服务;机场相关;飞机场",
+        "typecode": "150104",
+        "createdAt": "2026-02-07T13:31:57.534Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "driving",
+          "description": "打车27.6km，30分钟",
+          "budget": 54
+        }
+      },
+      {
+        "id": "B03670W1Y7",
+        "name": "汉庭酒店(昆明火车站店)",
+        "address": "明通路20号云南供用电科技楼",
+        "location": "102.718402,25.022004",
+        "tel": "0871-68015866;4008121121;0871-68015866,0",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "typecode": "100105",
+        "createdAt": "2026-02-08T13:49:41.307Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      }
+    ],
+    "createdAt": "2026-02-07T12:00:00.000Z",
+    "updatedAt": "2026-02-08T16:37:43.382Z"
+  },
+  {
+    "id": "1770474320845",
+    "name": "Day2：昆明一日游",
+    "date": "",
+    "description": "昆明老街、翠湖公园、滇池海埂公园，选择性可去斗南花市（因为离酒店比较远）",
+    "pois": [
+      {
+        "id": "B03670W1Y7",
+        "name": "汉庭酒店(昆明火车站店)",
+        "address": "明通路20号云南供用电科技楼",
+        "location": "102.718402,25.022004",
+        "tel": "0871-68015866;4008121121;0871-68015866,0",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "typecode": "100105",
+        "createdAt": "2026-02-08T13:49:41.307Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "driving",
+          "description": "打车3.2km，10分钟",
+          "budget": 12
+        }
+      },
+      {
+        "id": "B0K1L5ARNE",
+        "name": "昆明老街纸片楼",
+        "address": "云瑞东路与云瑞西路交叉口东20米",
+        "location": "102.707798,25.039637",
+        "tel": [],
+        "type": "商务住宅;商务住宅相关;商务住宅相关",
+        "typecode": "120000",
+        "createdAt": "2026-02-07T14:13:14.211Z",
+        "description": "可以吃点当地特色",
+        "budget": "",
+        "transport": {
+          "type": "walking",
+          "description": "步行逛过去即可，大约18分钟",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0367065BF",
+        "name": "翠湖公园",
+        "address": "翠湖南路67号",
+        "location": "102.703621,25.048416",
+        "createdAt": "2026-02-07T12:21:39.993Z",
+        "description": "逛一逛即可",
+        "budget": 0,
+        "transport": {
+          "type": "driving",
+          "description": "打车14km，33分钟",
+          "budget": 38
+        }
+      },
+      {
+        "id": "B036702E39",
+        "name": "滇池海埂公园",
+        "address": "滇池路1318号",
+        "location": "102.658412,24.958925",
+        "createdAt": "2026-02-07T12:21:50.652Z",
+        "description": "打打卡拍拍照",
+        "budget": 0,
+        "transport": {
+          "type": "driving",
+          "description": "打车16km，26分钟",
+          "budget": 37
+        }
+      },
+      {
+        "id": "B0FFGF6XB3",
+        "name": "斗南花卉市场",
+        "address": "金桂街76号",
+        "location": "102.788064,24.902676",
+        "tel": "18685488479",
+        "type": "购物服务;花鸟鱼虫市场;花卉市场|公司企业;公司企业;公司企业",
+        "typecode": "060501|170000",
+        "createdAt": "2026-02-07T13:43:04.732Z",
+        "description": "选择性去，因为离酒店比较远，主要是看花买花",
+        "budget": "",
+        "transport": {
+          "type": "driving",
+          "description": "打车21.5km，25分钟",
+          "budget": 40
+        }
+      },
+      {
+        "id": "B03670W1Y7",
+        "name": "汉庭酒店(昆明火车站店)",
+        "address": "明通路20号云南供用电科技楼",
+        "location": "102.718402,25.022004",
+        "tel": "0871-68015866;4008121121;0871-68015866,0",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "typecode": "100105",
+        "createdAt": "2026-02-08T13:49:41.307Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      }
+    ],
+    "createdAt": "2026-02-07T14:25:20.870Z",
+    "updatedAt": "2026-02-08T16:39:49.103Z"
+  },
+  {
+    "id": "1770477639209",
+    "name": "Day3：昆明-大理",
+    "date": "",
+    "description": "",
+    "pois": [
+      {
+        "id": "B03670W1Y7",
+        "name": "汉庭酒店(昆明火车站店)",
+        "address": "明通路20号云南供用电科技楼",
+        "location": "102.718402,25.022004",
+        "tel": "0871-68015866;4008121121;0871-68015866,0",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "typecode": "100105",
+        "createdAt": "2026-02-08T13:49:41.307Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "driving",
+          "description": "打车2.2km，6分钟",
+          "budget": 10
+        }
+      },
+      {
+        "id": "B036705IZ2",
+        "name": "昆明站",
+        "address": "北京路1号",
+        "location": "102.722277,25.015257",
+        "createdAt": "2026-02-07T12:21:29.804Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "train",
+          "description": "预算已在交通预算中计算过",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B03680030R",
+        "name": "大理站",
+        "address": "巍山路261号",
+        "location": "100.250635,25.589569",
+        "tel": [],
+        "type": "交通设施服务;火车站;火车站",
+        "typecode": "150200",
+        "createdAt": "2026-02-07T17:44:37.585Z",
+        "description": "在大理站附近租车，租车预算已另外记录",
+        "budget": "",
+        "transport": {
+          "type": "driving",
+          "description": "3.8km，16分钟",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0FFLLKKUM",
+        "name": "兴盛大桥",
+        "address": "大理市",
+        "location": "100.231074,25.599841",
+        "tel": [],
+        "type": "地名地址信息;交通地名;桥",
+        "typecode": "190307",
+        "createdAt": "2026-02-08T05:15:08.247Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "driving",
+          "description": "14km，42分钟",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0J69YTGKJ",
+        "name": "大理市莞溪客栈",
+        "address": "大理东门村委会果子园7组古城东门牌坊西北方向80米",
+        "location": "100.171999,25.700560",
+        "tel": "13308131623;13668369983",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "typecode": "100000",
+        "createdAt": "2026-02-08T13:14:04.549Z",
+        "description": "晚饭，大理古城觅食",
+        "budget": "",
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      }
+    ],
+    "createdAt": "2026-02-07T15:20:39.233Z",
+    "updatedAt": "2026-02-08T16:41:35.814Z"
+  },
+  {
+    "id": "1770477655864",
+    "name": "Day4：大理海西一日游",
+    "date": "",
+    "description": "",
+    "pois": [
+      {
+        "id": "B0J1TSCF6W",
+        "name": "大理古城禧东智能轻奢民宿(洱海门店)",
+        "address": "大理古城大院子村东门六组223号",
+        "location": "100.172549,25.698019",
+        "tel": "13708649304;15187296119",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "typecode": "100000",
+        "createdAt": "2026-02-07T15:16:02.153Z",
+        "description": "早午饭，大理古城附近觅食",
+        "budget": "",
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0368005Z0",
+        "name": "大理苍山世界地质公园",
+        "address": "Z013附近",
+        "location": "100.119072,25.657252",
+        "tel": "0872-2289977",
+        "type": "风景名胜;风景名胜;国家级景点|风景名胜;公园广场;公园",
+        "typecode": "110202|110101",
+        "createdAt": "2026-02-08T05:27:18.440Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0FFI6ZBLL",
+        "name": "龙龛码头",
+        "address": "大理镇环海西路龙龛生态园(北侧)",
+        "location": "100.206525,25.698072",
+        "tel": [],
+        "type": "交通设施服务;港口码头;港口码头",
+        "typecode": "150300",
+        "createdAt": "2026-02-08T05:27:55.191Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0368000BB",
+        "name": "才村码头",
+        "address": "月华路尽头",
+        "location": "100.193637,25.718727",
+        "tel": [],
+        "type": "交通设施服务;港口码头;港口码头",
+        "typecode": "150300",
+        "createdAt": "2026-02-08T05:28:30.918Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0J69YTGKJ",
+        "name": "大理市莞溪客栈",
+        "address": "大理东门村委会果子园7组古城东门牌坊西北方向80米",
+        "location": "100.171999,25.700560",
+        "tel": "13308131623;13668369983",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "typecode": "100000",
+        "createdAt": "2026-02-08T13:14:04.549Z",
+        "description": "晚饭，古城觅食",
+        "budget": "",
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      }
+    ],
+    "createdAt": "2026-02-07T15:20:55.888Z",
+    "updatedAt": "2026-02-08T13:18:18.160Z"
+  },
+  {
+    "id": "1770477663648",
+    "name": "Day5：沿海一路去海景房",
+    "date": "",
+    "description": "",
+    "pois": [
+      {
+        "id": "B0J1TSCF6W",
+        "name": "大理古城禧东智能轻奢民宿(洱海门店)",
+        "address": "大理古城大院子村东门六组223号",
+        "location": "100.172549,25.698019",
+        "tel": "13708649304;15187296119",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "typecode": "100000",
+        "createdAt": "2026-02-07T15:16:02.153Z",
+        "description": "早饭，古城觅食",
+        "budget": "",
+        "transport": {
+          "type": "driving",
+          "description": "19km，47分钟",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0FFH27SSH",
+        "name": "喜洲古镇",
+        "address": "清真路130号",
+        "location": "100.131582,25.852950",
+        "tel": [],
+        "type": "风景名胜;风景名胜;风景名胜",
+        "typecode": "110200",
+        "createdAt": "2026-02-08T05:29:29.475Z",
+        "description": "下午，喜洲古镇可以逛逛吃吃",
+        "budget": "",
+        "transport": {
+          "type": "driving",
+          "description": "沿环海路前往双廊海景房，32km，1小时10分钟",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0K3YOJNBZ",
+        "name": "大理橄榄树海景度假酒店(双廊洱海店)",
+        "address": "云南省大理白族自治州大理市双廊镇双廊村一组161号附3号(洱海生态保护核心区)",
+        "location": "100.191757,25.913509",
+        "tel": "18687962222;+861056320612,51543265",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "typecode": "100100",
+        "createdAt": "2026-02-07T17:47:07.972Z",
+        "description": "晚饭，双廊古镇觅食",
+        "budget": "",
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      }
+    ],
+    "createdAt": "2026-02-07T15:21:03.667Z",
+    "updatedAt": "2026-02-08T13:18:13.510Z"
+  },
+  {
+    "id": "1770477693189",
+    "name": "Day6：住大理洱海南部",
+    "date": "",
+    "description": "",
+    "pois": [
+      {
+        "id": "B0K3YOJNBZ",
+        "name": "大理橄榄树海景度假酒店(双廊洱海店)",
+        "address": "云南省大理白族自治州大理市双廊镇双廊村一组161号附3号(洱海生态保护核心区)",
+        "location": "100.191757,25.913509",
+        "tel": "18687962222;+861056320612,51543265",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "typecode": "100100",
+        "createdAt": "2026-02-07T17:47:07.972Z",
+        "description": "早饭，双廊古镇觅食",
+        "budget": "",
+        "transport": {
+          "type": "driving",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0368000B7",
+        "name": "小普陀",
+        "address": "海东镇海印村77号",
+        "location": "100.223013,25.807452",
+        "tel": "13764308272",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "typecode": "110200",
+        "createdAt": "2026-02-08T05:30:12.676Z",
+        "description": "海上一个小岛，可以打卡拍照",
+        "budget": 0,
+        "transport": {
+          "type": "driving",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0L0O5IV42",
+        "name": "文笔村风光景区",
+        "address": "文笔村",
+        "location": "100.233139,25.731445",
+        "tel": [],
+        "type": "风景名胜;风景名胜;风景名胜",
+        "typecode": "110200",
+        "createdAt": "2026-02-08T05:30:31.175Z",
+        "description": "有通向海里的彩虹公路，可以在文笔村或理想邦吃点东西",
+        "budget": "",
+        "transport": {
+          "type": "driving",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0FFGJWJA3",
+        "name": "理想邦",
+        "address": "环海东路",
+        "location": "100.269930,25.698271",
+        "tel": "0872-2356033",
+        "type": "体育休闲服务;休闲场所;休闲场所|风景名胜;风景名胜相关;旅游景点",
+        "typecode": "080500|110000",
+        "createdAt": "2026-02-08T05:30:40.606Z",
+        "description": "地中海风格建筑，可以打卡拍照",
+        "budget": 0,
+        "transport": {
+          "type": "driving",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B03680030R",
+        "name": "大理站",
+        "address": "巍山路261号",
+        "location": "100.250635,25.589569",
+        "tel": [],
+        "type": "交通设施服务;火车站;火车站",
+        "typecode": "150200",
+        "createdAt": "2026-02-07T17:44:37.585Z",
+        "description": "晚饭在大理站附近觅食",
+        "budget": "",
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0K1DADB52",
+        "name": "大理洱海公园美仑酒店",
+        "address": "巍山路267号",
+        "location": "100.253395,25.591380",
+        "tel": "0872-2130777;18724976143;19187786667",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "typecode": "100100",
+        "createdAt": "2026-02-08T16:42:41.838Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      }
+    ],
+    "createdAt": "2026-02-07T15:21:33.216Z",
+    "updatedAt": "2026-02-08T16:42:55.201Z"
+  },
+  {
+    "id": "1770477786896",
+    "name": "Day7：大理-丽江",
+    "date": "",
+    "description": "",
+    "pois": [
+      {
+        "id": "B0K1DADB52",
+        "name": "大理洱海公园美仑酒店",
+        "address": "巍山路267号",
+        "location": "100.253395,25.591380",
+        "tel": "0872-2130777;18724976143;19187786667",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "typecode": "100100",
+        "createdAt": "2026-02-08T16:42:41.838Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B03680030R",
+        "name": "大理站",
+        "address": "巍山路261号",
+        "location": "100.250635,25.589569",
+        "tel": [],
+        "type": "交通设施服务;火车站;火车站",
+        "typecode": "150200",
+        "createdAt": "2026-02-07T17:44:37.585Z",
+        "description": "早午饭，在大理站附近觅食",
+        "budget": "",
+        "transport": {
+          "type": "train",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B037814F71",
+        "name": "丽江站",
+        "address": "上吉路附近",
+        "location": "100.252694,26.810521",
+        "tel": [],
+        "type": "交通设施服务;火车站;火车站",
+        "typecode": "150200",
+        "createdAt": "2026-02-08T11:23:56.566Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0JKJZHOCS",
+        "name": "汉庭酒店(丽江古城南门店)",
+        "address": "长水路99号",
+        "location": "100.233761,26.866165",
+        "tel": "0888-8886799;0888-8886899",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "typecode": "100000",
+        "createdAt": "2026-02-08T11:23:45.888Z",
+        "description": "晚饭，在丽江古城觅食",
+        "budget": "",
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      }
+    ],
+    "createdAt": "2026-02-07T15:23:06.919Z",
+    "updatedAt": "2026-02-08T16:43:06.078Z"
+  },
+  {
+    "id": "1770477795368",
+    "name": "Day8：丽江一日游",
+    "date": "",
+    "description": "",
+    "pois": [
+      {
+        "id": "B0JKJZHOCS",
+        "name": "汉庭酒店(丽江古城南门店)",
+        "address": "长水路99号",
+        "location": "100.233761,26.866165",
+        "tel": "0888-8886799;0888-8886899",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "typecode": "100000",
+        "createdAt": "2026-02-08T11:23:45.888Z",
+        "description": "早午饭，在丽江古城觅食",
+        "budget": "",
+        "transport": {
+          "type": "bus",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B03780IGNC",
+        "name": "丽江古城-古城忠义市场",
+        "address": "长水路85号",
+        "location": "100.235617,26.866718",
+        "tel": "18088088749",
+        "type": "购物服务;综合市场;综合市场",
+        "typecode": "060700",
+        "createdAt": "2026-02-08T15:37:46.951Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "bus",
+          "description": "101大巴，15/人，两人票",
+          "budget": 30
+        }
+      },
+      {
+        "id": "B0KUSZLB3O",
+        "name": "玉龙雪山国家级风景名胜区游客服务中心",
+        "address": "玉龙雪山冰川博物馆南侧60米",
+        "location": "100.258755,27.097522",
+        "tel": "0888-5131068",
+        "type": "生活服务;信息咨询中心;服务中心",
+        "typecode": "070201",
+        "createdAt": "2026-02-08T16:34:54.366Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0378157WA",
+        "name": "玉龙雪山国家级风景名胜区蓝月谷",
+        "address": "雪山景区内",
+        "location": "100.245886,27.124436",
+        "tel": "0888-5131111;0888-5111764",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "typecode": "110200",
+        "createdAt": "2026-02-08T11:25:33.652Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      },
+      {
+        "id": "B0KUSZLB3O",
+        "name": "玉龙雪山国家级风景名胜区游客服务中心",
+        "address": "玉龙雪山冰川博物馆南侧60米",
+        "location": "100.258755,27.097522",
+        "tel": "0888-5131068",
+        "type": "生活服务;信息咨询中心;服务中心",
+        "typecode": "070201",
+        "createdAt": "2026-02-08T16:34:54.366Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "bus",
+          "description": "101大巴15/人，两人票",
+          "budget": 30
+        }
+      },
+      {
+        "id": "B03780IGNC",
+        "name": "丽江古城-古城忠义市场",
+        "address": "长水路85号",
+        "location": "100.235617,26.866718",
+        "tel": "18088088749",
+        "type": "购物服务;综合市场;综合市场",
+        "typecode": "060700",
+        "createdAt": "2026-02-08T15:37:46.951Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      }
+    ],
+    "createdAt": "2026-02-07T15:23:15.391Z",
+    "updatedAt": "2026-02-08T16:35:37.174Z"
+  },
+  {
+    "id": "1770477811056",
+    "name": "Day9：从丽江返程",
+    "date": "",
+    "description": "",
+    "pois": [
+      {
+        "id": "B0JKJZHOCS",
+        "name": "汉庭酒店(丽江古城南门店)",
+        "address": "长水路99号",
+        "location": "100.233761,26.866165",
+        "tel": "0888-8886799;0888-8886899",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "typecode": "100000",
+        "createdAt": "2026-02-08T11:23:45.888Z",
+        "description": "早午饭，丽江古城附近觅食",
+        "budget": "",
+        "transport": {
+          "type": "driving",
+          "description": "打车28km，40分钟",
+          "budget": ""
+        }
+      },
+      {
+        "id": "B037800926",
+        "name": "丽江三义国际机场",
+        "address": "七河镇丽大公路旁",
+        "location": "100.246460,26.671508",
+        "tel": "0888-5173081;0888-5173088",
+        "type": "交通设施服务;机场相关;飞机场",
+        "typecode": "150104",
+        "createdAt": "2026-02-08T11:24:02.886Z",
+        "description": "",
+        "budget": 0,
+        "transport": {
+          "type": "",
+          "description": "",
+          "budget": 0
+        }
+      }
+    ],
+    "createdAt": "2026-02-07T15:23:31.084Z",
+    "updatedAt": "2026-02-08T13:18:44.004Z"
+  }
+]
