@@ -360,9 +360,23 @@ app.get('/api/amap/place/text', async (req, res) => {
   }
 });
 
-// 主页路由
+// 主页路由 - 修改为简单的健康检查响应
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.json({
+    status: 'ok',
+    service: 'TripMaster Backend',
+    timestamp: new Date().toISOString(),
+    version: '1.0.0'
+  });
+});
+
+// 专门的健康检查端点
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
 });
 
 // 启动服务器
