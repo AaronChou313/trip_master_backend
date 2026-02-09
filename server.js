@@ -14,35 +14,25 @@ if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 }
 
-// 动态CORS配置 - 支持多种环境
-const corsOptions = {
-  origin: function (origin, callback) {
-    // 允许的域名列表
-    const allowedOrigins = [
-      'http://localhost:8080',           // 本地开发
-      'http://localhost:3000',           // 本地开发备用端口
-      'http://127.0.0.1:8080',          // 本地IP访问
-      'https://trip-master-frontend-alpha.vercel.app/', // Vercel生产环境
-      process.env.FRONTEND_URL,         // 环境变量指定的前端URL
-    ].filter(Boolean); // 过滤掉undefined值
+// 允许的域名列表
+const allowedOrigins = [
+  'http://localhost:8080',  // 本地前端
+  'https://你的vercel域名.vercel.app'  // 你的 Vercel 域名
+];
 
-    // 允许没有origin的请求（如移动应用、curl等）
+app.use(cors({
+  origin: function (origin, callback) {
+    // 允许没有 origin 的请求（如 curl 或移动端）
     if (!origin) return callback(null, true);
     
-    // 检查origin是否在允许列表中
-    if (allowedOrigins.includes(origin)) {
+    if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      console.log('CORS blocked origin:', origin);
       callback(new Error('Not allowed by CORS'));
     }
   },
-  credentials: true,
-  optionsSuccessStatus: 200
-};
-
-// 应用CORS中间件
-app.use(cors(corsOptions));
+  credentials: true
+}));
 
 // 其他中间件配置
 app.use(bodyParser.json({ limit: '10mb' }));
