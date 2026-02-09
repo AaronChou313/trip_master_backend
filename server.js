@@ -14,9 +14,39 @@ if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 }
 
-// 中间件配置
-app.use(cors());
-app.use(bodyParser.json());
+// 动态CORS配置 - 支持多种环境
+const corsOptions = {
+  origin: function (origin, callback) {
+    // 允许的域名列表
+    const allowedOrigins = [
+      'http://localhost:8080',           // 本地开发
+      'http://localhost:3000',           // 本地开发备用端口
+      'http://127.0.0.1:8080',          // 本地IP访问
+      'https://your-vercel-app.vercel.app', // Vercel生产环境
+      process.env.FRONTEND_URL,         // 环境变量指定的前端URL
+    ].filter(Boolean); // 过滤掉undefined值
+
+    // 允许没有origin的请求（如移动应用、curl等）
+    if (!origin) return callback(null, true);
+    
+    // 检查origin是否在允许列表中
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log('CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+// 应用CORS中间件
+app.use(cors(corsOptions));
+
+// 其他中间件配置
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.static('dist'));
 
 // 数据文件路径
@@ -24,7 +54,7 @@ const DATA_FILES = {
   pois: path.join(DATA_DIR, 'pois.json'),
   itineraries: path.join(DATA_DIR, 'itineraries.json'),
   budgets: path.join(DATA_DIR, 'budgets.json'),
-  memos: path.join(DATA_DIR, 'memos.json') // 添加备忘录数据文件
+  memos: path.join(DATA_DIR, 'memos.json')
 };
 
 // 初始化数据文件
@@ -33,7 +63,7 @@ function initializeDataFiles() {
     pois: [],
     itineraries: [],
     budgets: [],
-    memos: [] // 初始化备忘录数组
+    memos: []
   };
 
   Object.keys(DATA_FILES).forEach(key => {
@@ -324,7 +354,8 @@ app.get('/api/amap/place/text', async (req, res) => {
       return res.status(500).json({ error: 'AMAP API key not configured' });
     }
     
-    const url = `${process.env.AMAP_API_URL}/place/text?key=${apiKey}&keywords=${encodeURIComponent(keywords)}&city=${encodeURIComponent(city || '')}&offset=20&page=1&extensions=all`;
+    const baseUrl = process.env.AMAP_API_URL || 'https://restapi.amap.com/v3';
+    const url = `${baseUrl}/place/text?key=${apiKey}&keywords=${encodeURIComponent(keywords)}&city=${encodeURIComponent(city || '')}&offset=20&page=1&extensions=all`;
     
     const response = await fetch(url);
     const data = await response.json();
@@ -336,6 +367,15 @@ app.get('/api/amap/place/text', async (req, res) => {
   }
 });
 
+// 健康检查端点
+app.get('/health', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
 // 主页路由
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
@@ -343,5 +383,7 @@ app.get('/', (req, res) => {
 
 // 启动服务器
 app.listen(PORT, () => {
-  console.log(`TripMaster Server running on http://${process.env.HOST}:${PORT}`);
+  console.log(`TripMaster Server running on http://${process.env.HOST || 'localhost'}:${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Frontend URLs allowed: ${process.env.FRONTEND_URL || 'localhost:8080'}`);
 });
