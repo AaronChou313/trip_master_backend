@@ -107,6 +107,74 @@ Authorization: Bearer <token>
 }
 ```
 
+### 更新当前用户信息
+**PUT** `/api/auth/me`
+
+#### Headers
+```
+Authorization: Bearer <token>
+```
+
+#### 请求参数
+```json
+{
+  "username": "string",          // 必填，新的用户名
+  "email": "string",             // 必填，新的邮箱地址
+  "currentPassword": "string",   // 可选，修改密码时需要提供当前密码
+  "newPassword": "string"        // 可选，新密码（至少6位）
+}
+```
+
+#### 成功响应 (200)
+```json
+{
+  "message": "用户信息更新成功",
+  "user": {
+    "id": 1,
+    "username": "newusername",
+    "email": "newemail@example.com",
+    "createdAt": "2026-02-09T10:00:00.000Z",
+    "updatedAt": "2026-02-10T15:30:00.000Z"
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+#### 错误响应
+- 400: 参数缺失或格式错误（如新密码长度不足）
+- 401: 当前密码错误
+- 409: 用户名或邮箱已被占用
+
+### 删除当前用户账户
+**DELETE** `/api/auth/me`
+
+#### Headers
+```
+Authorization: Bearer <token>
+```
+
+#### 请求参数
+```json
+{
+  "password": "string"      // 必填，当前密码，用于确认删除
+}
+```
+
+#### 成功响应 (200)
+```json
+{
+  "message": "账户删除成功"
+}
+```
+
+#### 错误响应
+- 400: 未提供密码
+- 401: 密码错误
+
+#### 注意事项
+- 删除账户会同时删除所有关联数据（POIs、行程、预算、备忘录等）
+- 此操作不可恢复
+
 ## 兴趣点(POIs)接口
 
 ### 获取所有POIs
@@ -335,10 +403,11 @@ Authorization: Bearer <token>
     "name": "【住宿】汉庭昆明火车站酒店",
     "description": "172/晚，两晚",
     "amount": 344,
+    "actualAmount": 320,
     "category": "accommodation",
     "user_id": 1,
-    "created_at": "2026-02-07T12:52:17.985Z",
-    "updated_at": "2026-02-08T13:50:11.890Z"
+    "createdAt": "2026-02-07T12:52:17.985Z",
+    "updatedAt": "2026-02-08T13:50:11.890Z"
   }
 ]
 ```
@@ -357,7 +426,8 @@ Authorization: Bearer <token>
   "id": "string",           // 可选，系统会自动生成
   "name": "string",         // 必填
   "description": "string",  // 可选
-  "amount": 100,            // 必填，金额
+  "amount": 100,            // 必填，预算金额
+  "actualAmount": 0,        // 可选，实际消费金额（默认为0）
   "category": "string"      // 可选，分类
 }
 ```
@@ -369,10 +439,11 @@ Authorization: Bearer <token>
   "name": "新预算项",
   "description": "描述",
   "amount": 100,
+  "actualAmount": 0,
   "category": "custom",
   "user_id": 1,
-  "created_at": "2026-02-09T10:00:00.000Z",
-  "updated_at": "2026-02-09T10:00:00.000Z"
+  "createdAt": "2026-02-09T10:00:00.000Z",
+  "updatedAt": "2026-02-09T10:00:00.000Z"
 }
 ```
 

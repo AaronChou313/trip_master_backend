@@ -44,6 +44,8 @@ app.get('/api/docs', (req, res) => {
       'POST /api/auth/register': '用户注册',
       'POST /api/auth/login': '用户登录',
       'GET /api/auth/me': '获取当前用户信息',
+      'PUT /api/auth/me': '更新当前用户信息',
+      'DELETE /api/auth/me': '删除当前用户账户',
       'GET /api/pois': '获取POIs列表',
       'POST /api/pois': '创建POI',
       'DELETE /api/pois/:id': '删除POI',
@@ -232,6 +234,149 @@ app.get('/api/auth/me', authenticateToken, async (req, res) => {
     res.json(result.rows[0]);
   } catch (error) {
     console.error('获取用户信息错误:', error);
+    res.status(500).json({ error: '服务器内部错误' });
+  }
+});
+
+// 更新当前用户信息
+app.put('/api/auth/me', authenticateToken, async (req, res) => {
+  try {
+    const { username, email, currentPassword, newPassword } = req.body;
+
+    // 验证必填字段
+    if (!username || !email) {
+      return res.status(400).json({ error: '用户名和邮箱都是必填项' });
+    }
+
+    // 如果要修改密码，需要验证当前密码
+    if (newPassword) {
+      if (!currentPassword) {
+        return res.status(400).json({ error: '修改密码需要提供当前密码' });
+      }
+      if (newPassword.length < 6) {
+        return res.status(400).json({ error: '新密码长度至少为6位' });
+      }
+    }
+
+    // 获取当前用户信息
+    const currentUser = await db.query(
+      'SELECT id, username, email, password_hash FROM users WHERE id = $1',
+      [req.user.userId]
+    );
+
+    if (currentUser.rows.length === 0) {
+      return res.status(404).json({ error: '用户不存在' });
+    }
+
+    const user = currentUser.rows[0];
+
+    // 如果要修改密码，验证当前密码
+    if (newPassword) {
+      const isValidPassword = await bcrypt.compare(currentPassword, user.password_hash);
+      if (!isValidPassword) {
+        return res.status(401).json({ error: '当前密码错误' });
+      }
+    }
+
+    // 检查用户名或邮箱是否已被其他用户占用
+    const existingUser = await db.query(
+      'SELECT id FROM users WHERE (username = $1 OR email = $2) AND id != $3',
+      [username, email, req.user.userId]
+    );
+
+    if (existingUser.rows.length > 0) {
+      const conflictUser = existingUser.rows[0];
+      if (conflictUser.username === username) {
+        return res.status(409).json({ error: '用户名已被占用' });
+      } else {
+        return res.status(409).json({ error: '邮箱已被占用' });
+      }
+    }
+
+    // 构建更新语句
+    let updateFields = 'username = $1, email = $2';
+    let updateValues = [username, email];
+    let paramIndex = 3;
+
+    // 如果要修改密码，添加密码更新
+    if (newPassword) {
+      const passwordHash = await bcrypt.hash(newPassword, 10);
+      updateFields += `, password_hash = $${paramIndex}`;
+      updateValues.push(passwordHash);
+      paramIndex++;
+    }
+
+    updateValues.push(new Date().toISOString(), req.user.userId);
+
+    // 执行更新
+    const result = await db.query(
+      `UPDATE users SET ${updateFields}, updated_at = $${paramIndex} WHERE id = $${paramIndex + 1}
+       RETURNING id, username, email, created_at, updated_at`,
+      updateValues
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: '用户不存在或无权限修改' });
+    }
+
+    // 生成新的JWT令牌
+    const token = jwt.sign(
+      { userId: result.rows[0].id, username: result.rows[0].username },
+      JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+
+    res.json({
+      message: '用户信息更新成功',
+      user: {
+        id: result.rows[0].id,
+        username: result.rows[0].username,
+        email: result.rows[0].email,
+        createdAt: result.rows[0].created_at,
+        updatedAt: result.rows[0].updated_at
+      },
+      token
+    });
+  } catch (error) {
+    console.error('更新用户信息错误:', error);
+    res.status(500).json({ error: '服务器内部错误' });
+  }
+});
+
+// 删除当前用户账户
+app.delete('/api/auth/me', authenticateToken, async (req, res) => {
+  try {
+    const { password } = req.body;
+
+    // 验证必填字段
+    if (!password) {
+      return res.status(400).json({ error: '需要提供密码以确认删除账户' });
+    }
+
+    // 获取当前用户信息
+    const currentUser = await db.query(
+      'SELECT id, username, email, password_hash FROM users WHERE id = $1',
+      [req.user.userId]
+    );
+
+    if (currentUser.rows.length === 0) {
+      return res.status(404).json({ error: '用户不存在' });
+    }
+
+    const user = currentUser.rows[0];
+
+    // 验证密码
+    const isValidPassword = await bcrypt.compare(password, user.password_hash);
+    if (!isValidPassword) {
+      return res.status(401).json({ error: '密码错误，无法删除账户' });
+    }
+
+    // 删除用户（由于设置了 CASCADE，相关的 POIs、行程、预算、备忘录也会被删除）
+    await db.query('DELETE FROM users WHERE id = $1', [req.user.userId]);
+
+    res.json({ message: '账户删除成功' });
+  } catch (error) {
+    console.error('删除账户错误:', error);
     res.status(500).json({ error: '服务器内部错误' });
   }
 });
