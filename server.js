@@ -609,7 +609,8 @@ app.delete('/api/itineraries/:id', authenticateToken, async (req, res) => {
 app.get('/api/budgets', authenticateToken, async (req, res) => {
   try {
     const result = await db.query(
-      'SELECT * FROM budgets WHERE user_id = $1 ORDER BY created_at DESC',
+      `SELECT id, name, description, amount, actual_amount as "actualAmount", category, user_id, created_at as "createdAt", updated_at as "updatedAt"
+       FROM budgets WHERE user_id = $1 ORDER BY created_at DESC`,
       [req.user.userId]
     );
     res.json(result.rows);
@@ -621,15 +622,15 @@ app.get('/api/budgets', authenticateToken, async (req, res) => {
 
 app.post('/api/budgets', authenticateToken, async (req, res) => {
   try {
-    const { id, name, description, amount, category } = req.body;
-    
+    const { id, name, description, amount, actualAmount, category } = req.body;
+
     const result = await db.query(
-      `INSERT INTO budgets (id, name, description, amount, category, user_id, created_at, updated_at)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-       RETURNING *`,
-      [id || Date.now().toString(), name, description, amount, category, req.user.userId, new Date().toISOString(), new Date().toISOString()]
+      `INSERT INTO budgets (id, name, description, amount, actual_amount, category, user_id, created_at, updated_at)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       RETURNING id, name, description, amount, actual_amount as "actualAmount", category, user_id, created_at as "createdAt", updated_at as "updatedAt"`,
+      [id || Date.now().toString(), name, description, amount, actualAmount || 0, category, req.user.userId, new Date().toISOString(), new Date().toISOString()]
     );
-    
+
     res.status(201).json(result.rows[0]);
   } catch (error) {
     console.error('创建预算错误:', error);
@@ -639,20 +640,20 @@ app.post('/api/budgets', authenticateToken, async (req, res) => {
 
 app.put('/api/budgets/:id', authenticateToken, async (req, res) => {
   try {
-    const { name, description, amount, category } = req.body;
-    
+    const { name, description, amount, actualAmount, category } = req.body;
+
     const result = await db.query(
-      `UPDATE budgets 
-       SET name = $1, description = $2, amount = $3, category = $4, updated_at = $5
-       WHERE id = $6 AND user_id = $7
-       RETURNING *`,
-      [name, description, amount, category, new Date().toISOString(), req.params.id, req.user.userId]
+      `UPDATE budgets
+       SET name = $1, description = $2, amount = $3, actual_amount = $4, category = $5, updated_at = $6
+       WHERE id = $7 AND user_id = $8
+       RETURNING id, name, description, amount, actual_amount as "actualAmount", category, user_id, created_at as "createdAt", updated_at as "updatedAt"`,
+      [name, description, amount, actualAmount !== undefined ? actualAmount : null, category, new Date().toISOString(), req.params.id, req.user.userId]
     );
-    
+
     if (result.rows.length === 0) {
       return res.status(404).json({ error: '预算不存在或无权限修改' });
     }
-    
+
     res.json(result.rows[0]);
   } catch (error) {
     console.error('更新预算错误:', error);
