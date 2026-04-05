@@ -1,0 +1,316 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "TripMaster API",
+    "version": "2.1.0",
+    "description": "OpenAPI spec for TripMaster backend. Import this file into Apifox to manage the API."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local development"
+    }
+  ],
+  "tags": [
+    { "name": "System" },
+    { "name": "Auth" },
+    { "name": "POIs" },
+    { "name": "Itineraries" },
+    { "name": "Budgets" },
+    { "name": "Memos" },
+    { "name": "AMap" }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "tags": ["System"],
+        "summary": "Root endpoint",
+        "responses": {
+          "200": { "description": "Root metadata" }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": ["System"],
+        "summary": "Health check",
+        "responses": {
+          "200": { "description": "Healthy" },
+          "503": { "description": "Unhealthy" }
+        }
+      }
+    },
+    "/api/docs": {
+      "get": {
+        "tags": ["System"],
+        "summary": "Documentation index",
+        "responses": {
+          "200": { "description": "Documentation info" }
+        }
+      }
+    },
+    "/api/openapi.json": {
+      "get": {
+        "tags": ["System"],
+        "summary": "OpenAPI spec for Apifox import",
+        "responses": {
+          "200": { "description": "OpenAPI JSON" }
+        }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Register user",
+        "responses": {
+          "201": { "description": "Registered" }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Login",
+        "responses": {
+          "200": { "description": "Logged in" }
+        }
+      }
+    },
+    "/api/auth/me": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Get current user",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "Current user" }
+        }
+      },
+      "put": {
+        "tags": ["Auth"],
+        "summary": "Update current user",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "Updated" }
+        }
+      },
+      "delete": {
+        "tags": ["Auth"],
+        "summary": "Delete current user",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "Deleted" }
+        }
+      }
+    },
+    "/api/pois": {
+      "get": {
+        "tags": ["POIs"],
+        "summary": "List POIs",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "POI list" }
+        }
+      },
+      "post": {
+        "tags": ["POIs"],
+        "summary": "Create POI",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "201": { "description": "Created" }
+        }
+      }
+    },
+    "/api/pois/{id}": {
+      "delete": {
+        "tags": ["POIs"],
+        "summary": "Delete POI",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Deleted" }
+        }
+      }
+    },
+    "/api/itineraries": {
+      "get": {
+        "tags": ["Itineraries"],
+        "summary": "List itineraries",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "Itinerary list" }
+        }
+      },
+      "post": {
+        "tags": ["Itineraries"],
+        "summary": "Create itinerary",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "201": { "description": "Created" }
+        }
+      }
+    },
+    "/api/itineraries/{id}": {
+      "put": {
+        "tags": ["Itineraries"],
+        "summary": "Update itinerary",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Updated" }
+        }
+      },
+      "delete": {
+        "tags": ["Itineraries"],
+        "summary": "Delete itinerary",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Deleted" }
+        }
+      }
+    },
+    "/api/budgets": {
+      "get": {
+        "tags": ["Budgets"],
+        "summary": "List budgets",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "Budget list" }
+        }
+      },
+      "post": {
+        "tags": ["Budgets"],
+        "summary": "Create budget",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "201": { "description": "Created" }
+        }
+      }
+    },
+    "/api/budgets/{id}": {
+      "put": {
+        "tags": ["Budgets"],
+        "summary": "Update budget",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Updated" }
+        }
+      },
+      "delete": {
+        "tags": ["Budgets"],
+        "summary": "Delete budget",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Deleted" }
+        }
+      }
+    },
+    "/api/memos": {
+      "get": {
+        "tags": ["Memos"],
+        "summary": "List memos",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "Memo list" }
+        }
+      },
+      "post": {
+        "tags": ["Memos"],
+        "summary": "Create memo",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "201": { "description": "Created" }
+        }
+      }
+    },
+    "/api/memos/{id}": {
+      "put": {
+        "tags": ["Memos"],
+        "summary": "Update memo",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Updated" }
+        }
+      },
+      "delete": {
+        "tags": ["Memos"],
+        "summary": "Delete memo",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Deleted" }
+        }
+      }
+    },
+    "/api/amap/place/text": {
+      "get": {
+        "tags": ["AMap"],
+        "summary": "Search place from AMap",
+        "responses": {
+          "200": { "description": "AMap response" }
+        }
+      }
+    }
+  }
+}

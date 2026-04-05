@@ -1,0 +1,12 @@
+Database Export Summary
+==================================================
+Date: 2026-03-11 14:07:50
+Database: railway
+
+Tables exported (6):
+  - budgets: 28 rows
+  - itineraries: 11 rows
+  - itinerary_pois: 42 rows
+  - memos: 10 rows
+  - pois: 48 rows
+  - users: 5 rows
